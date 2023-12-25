@@ -1,0 +1,37 @@
+import random
+
+def get_number():
+    a = input("Select your lower bound: ")
+    num_range = [a]
+    while True:
+        b = input("Select your upper bound: ")
+        i = a
+        if b > a:
+            if b-a+1 >= 10:
+                while i < b:
+                    i += 1
+                    num_range.append(i)
+                break
+            else:
+                print("Your range must be greater or equal to 10")
+        else:
+            print("Upper bound must be greater than lower bound")
+    number = random.choice(num_range)
+    return number
+
+def guessing():
+    correct_num = get_number()
+    attempt = 0
+    while True:
+        attempt += 1
+        guess = input("Guess: ")
+        if guess == correct_num:
+            print("Success in " + str(attempt) + " attempt, congratulation!")
+            break
+        elif guess > correct_num:
+            print("Too high, try again!")
+        elif guess < correct_num:
+            print("Too low, try again!")
+            
+            
+guessing()
